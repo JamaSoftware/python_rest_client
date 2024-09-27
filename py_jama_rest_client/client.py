@@ -162,18 +162,19 @@ class JamaClient:
         filter_results = self.__get_all(resource_path, params=params, allowed_results_per_page=allowed_results_per_page)
         return filter_results
 
-    def get_items(self, project_id, allowed_results_per_page=__allowed_results_per_page):
+    def get_items(self, project_id, root_only=False, allowed_results_per_page=__allowed_results_per_page):
         """
         This method will return all items in the specified project.
         Args:
             project_id: the project ID
+            root_only: boolean to give only the root nodes
             allowed_results_per_page: number of results per page
 
         Returns: a Json array of item objects
 
         """
         resource_path = 'items'
-        params = {'project': project_id}
+        params = {'project': project_id, 'rootOnly': True}
         item_data = self.__get_all(resource_path, params=params, allowed_results_per_page=allowed_results_per_page)
         return item_data
 
